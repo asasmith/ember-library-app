@@ -12,7 +12,6 @@ export default Controller.extend({
   actions: {
 
     submitForm() {
-      alert(`${this.emailAddress} says ${this.message}`)
       this.set('message', '')
       this.set('emailAddress', '')
     }
