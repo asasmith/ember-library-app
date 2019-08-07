@@ -10,8 +10,17 @@ export default Controller.extend({
 
   actions: {
     saveInvitation() {
-      this.set('responseMessage', `thank you we just saved your email ${this.get('emailAddress')}`)
-      this.set('emailAddress', '')
+      // get email field value
+      const email = this.get('emailAddress')
+
+      // create store record
+      const newInvitation = this.store.createRecord('invitation', { email })
+
+      // method to save email address to firebase db
+      newInvitation.save().then(response => {
+        this.set('responseMessage', `Thank you we just saved your email (${email}) with this id: ${response.get('id')}`)
+        this.set('emailAddress', '')
+      })
     }
   }
 });
