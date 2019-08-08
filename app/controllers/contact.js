@@ -12,8 +12,14 @@ export default Controller.extend({
   actions: {
 
     submitForm() {
-      this.set('message', '')
-      this.set('emailAddress', '')
+      const email = this.emailAddress
+      const message = this.message
+      const newContact = this.store.createRecord('contact', {email, message})
+
+      newContact.save().then(() => {
+        this.set('message', '')
+        this.set('emailAddress', '')
+      })
     }
   }
 });
