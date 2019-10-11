@@ -1,5 +1,8 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
+import sinon from 'sinon'
+
+const { spy } = sinon
 
 module('Unit | Controller | contact', function(hooks) {
   setupTest(hooks);
